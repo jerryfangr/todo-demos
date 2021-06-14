@@ -1,0 +1,19 @@
+import { ActionContext } from "vuex"
+import { LOAD_DATA, UPDATE_DATA } from "./constants"
+import { State } from "./state"
+import { STORAGE_NAME } from '@/constants'
+
+export default {
+  [UPDATE_DATA]: ({ commit }: ActionContext<State, unknown>, data: any[]): void => {
+    localStorage.setItem(STORAGE_NAME, JSON.stringify(data))
+    commit(UPDATE_DATA, data)
+  },
+
+  [LOAD_DATA]: ({ commit }: ActionContext<State, unknown>): void => {
+    const localData = localStorage.getItem(STORAGE_NAME)
+    if (localData) {
+      commit(UPDATE_DATA, JSON.parse(localData))
+    }
+  }
+}
+

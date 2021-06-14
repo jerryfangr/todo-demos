@@ -1,0 +1,7 @@
+const LOAD_DATA = 'LOAD_DATA'
+const UPDATE_DATA = 'UPDATE_DATA'
+
+export { 
+  LOAD_DATA, 
+  UPDATE_DATA 
+}

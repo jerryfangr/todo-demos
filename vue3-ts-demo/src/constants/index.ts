@@ -1,0 +1,5 @@
+const STORAGE_NAME = 'TODOSTORAGE-da1@#$589'
+
+export {
+  STORAGE_NAME
+}
