@@ -1,14 +1,17 @@
+import TodoList from "./types"
+
 /**
  * create a state
  * 
- * Todo add todoData type
  * @returns state
  */
 const createState = () => {
   const state: {
-    todoData: any[] | null
+    todoData: TodoList[],
+    isLoad: boolean
   } = {
-    todoData: null
+    todoData: [],
+    isLoad: false
   }
 
   return state

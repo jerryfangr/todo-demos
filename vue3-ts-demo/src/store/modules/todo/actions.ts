@@ -2,9 +2,10 @@ import { ActionContext } from "vuex"
 import { LOAD_DATA, UPDATE_DATA } from "./constants"
 import { State } from "./state"
 import { STORAGE_NAME } from '@/constants'
+import TodoList from "./types"
 
 export default {
-  [UPDATE_DATA]: ({ commit }: ActionContext<State, unknown>, data: any[]): void => {
+  [UPDATE_DATA]: ({ commit }: ActionContext<State, unknown>, data: TodoList[]): void => {
     localStorage.setItem(STORAGE_NAME, JSON.stringify(data))
     commit(UPDATE_DATA, data)
   },
@@ -12,7 +13,7 @@ export default {
   [LOAD_DATA]: ({ commit }: ActionContext<State, unknown>): void => {
     const localData = localStorage.getItem(STORAGE_NAME)
     if (localData) {
-      commit(UPDATE_DATA, JSON.parse(localData))
+      commit(LOAD_DATA, JSON.parse(localData))
     }
   }
 }

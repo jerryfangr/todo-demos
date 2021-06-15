@@ -1,13 +1,14 @@
 import { createState } from './state'
-import actions from './actions'
+import getters from './getters'
 import mutations from './mutations'
+import actions from './actions'
 
 const state = createState()
 
 export default {
   namespace: true,
   state,
-  // getters,
+  getters,
   mutations,
   actions,
 }
