@@ -13,8 +13,8 @@ import { useTodoStore } from '@/hooks'
 
 console.log('Home');
 
-// const store = useTodoStore()
-// store?.dispatch()
+const {dispatch} = useTodoStore()
+dispatch('todo/LOAD_DATA')
 </script>
 
 <style scoped>

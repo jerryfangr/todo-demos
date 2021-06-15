@@ -1,15 +1,20 @@
 import { useStore } from 'vuex'
 import { State } from '@/store'
+import { 
+  Getters, 
+  Dispatch, 
+  Commit 
+} from '@/store/modules/types'
 
-interface Store {
+interface StoreHooks {
   state: State
-  getters: any
-  dispatch: any
-  commit: any
+  getters: Getters
+  dispatch: Dispatch
+  commit: Commit
 }
 
 const useTodoStore = () => {
-  const { state, getters, dispatch, commit}: Store = useStore<State>();
+  const { state, getters, dispatch, commit}: StoreHooks = useStore<State>();
   return { state, getters, dispatch, commit }
 }
 
