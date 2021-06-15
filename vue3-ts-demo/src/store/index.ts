@@ -3,7 +3,7 @@ import modules from "./modules"
 import { State as TodoState } from './modules/todo/state'
 import { State as SceneState } from './modules/scene/state'
 
-type State = {
+interface State {
   todo: TodoState,
   scene: SceneState
 }

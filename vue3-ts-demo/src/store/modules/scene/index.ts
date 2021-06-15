@@ -4,7 +4,7 @@ import mutations from './mutations'
 const state = createState()
 
 export default {
-  namespace: true,
+  namespaced: true,
   state,
   // getters,
   mutations,

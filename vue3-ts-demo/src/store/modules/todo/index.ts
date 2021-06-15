@@ -6,7 +6,7 @@ import actions from './actions'
 const state = createState()
 
 export default {
-  namespace: true,
+  namespaced: true,
   state,
   getters,
   mutations,
