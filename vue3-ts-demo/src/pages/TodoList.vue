@@ -2,6 +2,7 @@
   <h1>Todo list detail</h1>
 
   <!-- todolist -->
+  <ul class="todolsit">
     <!-- 准备 -->
       <!-- todo-item -->
       <!-- todo-item -->
@@ -19,7 +20,10 @@
       <!-- todo-item -->
       <!-- todo-item -->
     <!-- 已完成 -->
+  </ul>
   <!-- todolist -->
+
+  <router-view></router-view>
 </template>
 
 <script setup lang="ts">
