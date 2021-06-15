@@ -3,8 +3,9 @@ import {
   createWebHistory,
   createRouter
 } from 'vue-router'
-
+import store from '@/store'
 import Home from "@/pages/Home.vue";
+
 
 
 const routes: Array<RouteRecordRaw> = [
@@ -16,24 +17,25 @@ const routes: Array<RouteRecordRaw> = [
   { // todolist detail
     path: '/todolist/:name',
     name: 'todolist',
-    component: Home,
+    component: () => import('@/pages/Home.vue'),
     props: true,
     meta: { needLoadData: true },
 
     children: [{ // todoitem detail
       path: 'todoitem/:id',
-      component: Home,
+      component: () => import('@/pages/Home.vue'),
       props: true,
     }]
   },
   { // not match paths
-    path: '*',
-    name: '404',
-    redirect: (to) => {
-      return '/home';
-    }
+    path: '/:pathMatch(.*)*',
+      name: '404',
+        redirect: (to) => {
+          return '/';
+        }
   }
 ]
+
 
 const router = createRouter({
   history: createWebHistory(),
@@ -42,9 +44,13 @@ const router = createRouter({
 
 router.beforeEach((to, from, next) => {
   if (to.meta.needLoadData) {
-    if (to) {
-      
+    if (store.state.todo.isLoad) {
+      next()
+    } else {
+      return { path: '/', }
     }
+  } else {
+    next()
   }
 })
 
