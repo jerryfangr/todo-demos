@@ -114,6 +114,41 @@
   dependencies:
     "@types/yargs-parser" "*"
 
+"@vicons/antd@^0.10.0":
+  version "0.10.0"
+  resolved "https://registry.npmjs.org/@vicons/antd/-/antd-0.10.0.tgz#17661ed654122a6450926f40ceba9fd67ae2e036"
+  integrity sha512-F+pVt2cYJDoJw5Wvu5YzvqnpCoUPeYh272R/ZVK+2H6U/G0LCDvEWNQHXkbLBpCtu9FAq/yac0NNfg1i0a1DGg==
+
+"@vicons/carbon@^0.10.0":
+  version "0.10.0"
+  resolved "https://registry.nlark.com/@vicons/carbon/download/@vicons/carbon-0.10.0.tgz#020dcb29f0d136e4b8ca5620d9849b35fc7ccc49"
+  integrity sha1-Ag3LKfDRNuS4ylYg2YSbNfx8zEk=
+
+"@vicons/fa@^0.10.0":
+  version "0.10.0"
+  resolved "https://registry.nlark.com/@vicons/fa/download/@vicons/fa-0.10.0.tgz#d91d5ca7cecbc7ca25e22f38c6b8340063826e32"
+  integrity sha1-2R1cp87Lx8ol4i84xrg0AGOCbjI=
+
+"@vicons/fluent@^0.10.0":
+  version "0.10.0"
+  resolved "https://registry.npmjs.org/@vicons/fluent/-/fluent-0.10.0.tgz#b9967841bd8727e9297b17d9e414cd3e2454ae25"
+  integrity sha512-ZAIU3GzOQDJttzxpABiluYtIwFfWq/mLnSknNAZHBv4d1f18u61sfZohckz42Ax7m7JWmDZhXwmDJOjo/zb+Vw==
+
+"@vicons/ionicons4@^0.10.0":
+  version "0.10.0"
+  resolved "https://registry.npmjs.org/@vicons/ionicons4/-/ionicons4-0.10.0.tgz#73c0059b9765a22ad14306fefc8f2aa2728e4659"
+  integrity sha512-ES4PkHqojTWeQtXkZ+FunPx3E4GZgM7gVRO00/h0kQvR5BPjMum15Kh2cvvnUNb9i6JfUr+WXV44N3qwlfMN9g==
+
+"@vicons/ionicons5@^0.10.0":
+  version "0.10.0"
+  resolved "https://registry.npmjs.org/@vicons/ionicons5/-/ionicons5-0.10.0.tgz#94641a71850d9e251f1059b67da4c19326bce962"
+  integrity sha512-AgOAI15sXiasLKozj9Nkrxdda8BoaFN4TaprFCcHbBMLFOUwk6QLLHRngC+X5YhYXVjLqMbQ6FtEbrPSPYIZEA==
+
+"@vicons/material@^0.10.0":
+  version "0.10.0"
+  resolved "https://registry.nlark.com/@vicons/material/download/@vicons/material-0.10.0.tgz#1213a111f729476ac053f883155b69c2d5262f48"
+  integrity sha1-EhOhEfcpR2rAU/iDFVtpwtUmL0g=
+
 "@vitejs/plugin-vue@^1.2.3":
   version "1.2.3"
   resolved "https://registry.nlark.com/@vitejs/plugin-vue/download/@vitejs/plugin-vue-1.2.3.tgz?cache=0&other_urls=https%3A%2F%2Fregistry.nlark.com%2F%40vitejs%2Fplugin-vue%2Fdownload%2F%40vitejs%2Fplugin-vue-1.2.3.tgz#2e8e008b1cc3a6ad1dfbec75743c7ffd9b4872a6"
