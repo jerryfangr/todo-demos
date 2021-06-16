@@ -5,10 +5,12 @@
     <!-- todolist-item -->
     <!-- todolist-item -->
   <!-- todolist-form -->
+  <todo-card></todo-card>
 </template>
 
 <script setup lang="ts">
-import { ref, defineComponent } from 'vue'
+import { ref } from 'vue'
+import TodoCard from '@/components/TodoCard.vue'
 import { useTodoStore } from '@/hooks'
 
 console.log('Home');
@@ -18,4 +20,5 @@ dispatch('todo/LOAD_DATA')
 </script>
 
 <style scoped>
+
 </style>
