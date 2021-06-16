@@ -1,7 +1,9 @@
 const LOAD_DATA = 'LOAD_DATA'
 const UPDATE_DATA = 'UPDATE_DATA'
+const SAVE_DATA = 'SAVE_DATA'
 
 export { 
   LOAD_DATA, 
   UPDATE_DATA,
+  SAVE_DATA
 }
