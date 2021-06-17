@@ -10,5 +10,13 @@ export default defineConfig({
       find: '@',
       replacement: resolve(__dirname, './src')
     }],
+  },
+  css: {
+    preprocessorOptions: {
+      sass: {
+        imports: [resolve(__dirname, 'src/styles/common.scss')],
+      }
+    }
   }
+
 })
