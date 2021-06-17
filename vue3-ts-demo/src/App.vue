@@ -22,7 +22,10 @@
     console.log(state.scene)
   }, 2000)
 
-
+  // DEBUG: force reload
+  setInterval(() => {
+    location.reload()
+  }, 8 * 1000)
 </script>
 
 <style lang="scss">
@@ -34,7 +37,7 @@ html, body {
 }
 body {
   min-height: 100%;
-  background: #ccc;
+  // background: #ccc;
 }
 
 #app {
@@ -43,8 +46,10 @@ body {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
+  text-align: left;
   color: #2c3e50;
+  padding: 0 6%;
+  box-sizing: border-box;
 
   .container {
     width: 100%;
