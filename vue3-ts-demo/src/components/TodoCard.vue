@@ -55,18 +55,20 @@
     e.stopPropagation()
     if (!hasDeleted) {
       hasDeleted = true
-      emit('deleteEvent')
+      emit('deleteEvent', e)
     }
   }
 
   // click edit button event
-  const editItem = () => {
-    emit('editEvent');
+  const editItem = (e: MouseEvent) => {
+    emit('editEvent', e);
   }
 </script>
 
 <style lang="scss" scoped>
   .card {
+    height: 40px;
+    width: 260px;
     box-sizing: border-box;
     display: inline-flex;
     justify-content: space-between;
@@ -75,8 +77,6 @@
     color: #585856;
     font-size: 16px;
     font-weight: bold;
-    height: 40px;
-    width: 260px;
     transition: background .2s;
     border-radius: 3px;
     padding: 0 12px;
