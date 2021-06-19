@@ -1,6 +1,6 @@
 <template>
-  <h1>Todo list detail</h1>
-
+  <h1>Todo list detail: {{name}}</h1>
+  <hr>
   <!-- todolist -->
   <ul class="todolsit">
     <!-- 准备 -->
@@ -27,7 +27,15 @@
 </template>
 
 <script setup lang="ts">
-import { ref, defineComponent } from 'vue'
+import { ref, defineProps } from 'vue'
+
+defineProps({
+  name: {
+    type: String,
+    required: true
+  }
+})
+
 
 </script>
 

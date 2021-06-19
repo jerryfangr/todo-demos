@@ -17,9 +17,9 @@ const routes: Array<RouteRecordRaw> = [
   { // todolist detail
     path: '/todolist/:name',
     name: 'todolist',
-    component: () => import('@/pages/Home.vue'),
+    component: () => import('@/pages/TodoList.vue'),
     props: true,
-    meta: { needLoadData: true },
+    meta: { needLoadData: false },
 
     children: [{ // todoitem detail
       path: 'todoitem/:id',
