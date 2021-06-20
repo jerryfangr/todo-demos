@@ -11,7 +11,7 @@ const createState = () => {
     isLoad: boolean
   } = {
     todoData: [],
-    isLoad: false
+    isLoad: true // false
   }
 
   return state

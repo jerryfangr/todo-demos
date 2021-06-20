@@ -8,27 +8,29 @@
 </template>
 
 <script setup lang="ts">
-  import { ref, computed } from 'vue'
-  import { NConfigProvider, darkTheme } from 'naive-ui'
-  import { useTodoStore } from '@/hooks'
-  const { state, getters, dispatch, commit} = useTodoStore()
+import { ref, computed } from 'vue'
+import { NConfigProvider, darkTheme } from 'naive-ui'
+import { useTodoStore } from '@/hooks'
+const { state, getters, dispatch, commit} = useTodoStore()
 
-  ref: darkMode = computed(() => {
-    return state.scene.isDarkMode
-  })
+ref: darkMode = computed(() => {
+  return state.scene.isDarkMode
+})
 
-  setTimeout(() => {
-    // commit('scene/toggleDarkMode')
-    console.log(state.scene)
-  }, 2000)
+setTimeout(() => {
+  // commit('scene/toggleDarkMode')
+  console.log(state.scene)
+}, 2000)
 
-  // DEBUG: force reload
-  setInterval(() => {
-    location.reload()
-  }, 8 * 1000)
+// DEBUG: force reload
+// setInterval(() => {
+//   location.reload()
+// }, 8 * 1000)
 </script>
 
 <style lang="scss">
+@import "@/styles/common.scss";
+
 html, body {
   margin: 0;
   padding: 0;
