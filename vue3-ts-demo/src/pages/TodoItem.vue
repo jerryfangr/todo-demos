@@ -1,8 +1,11 @@
 <template>
-  <h1>Todo Item detail</h1>
-  <!-- operate edit delete -->
-  <!-- title -->
-  <!-- content -->
+  <title>Todo Item detail</title>
+  
+  <div class="content">
+    <textarea name="" id="" cols="30" rows="10">
+      
+    </textarea>
+  </div>
 </template>
 
 <script setup lang="ts">

@@ -1,5 +1,6 @@
 <template>
-  <h1>Todo list detail: {{name}}</h1>
+  <title>Todo list detail: {{name}}</title>
+  <input />
   <hr>
   <!-- todolist -->
   <ul class="todolsit">
