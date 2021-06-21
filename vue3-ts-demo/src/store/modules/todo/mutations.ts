@@ -3,7 +3,9 @@ import {
   UPDATE_DATA, 
   SWITCH_TODOLIST, 
   ADD_TODOLIST, 
-  ADD_TODOITEM 
+  ADD_TODOITEM,
+  DELETE_TODOLIST,
+  DELETE_TODOITEM,
 } from "./constants";
 import { State } from "./state";
 import { TodoList, TodoItem} from "./types"
@@ -28,7 +30,17 @@ export default {
   },
 
   [ADD_TODOITEM]: (state: State, data: TodoItem) => {
+    const todoList = state.todoData[state.currentTodoList]
+    todoList?.todoItems.push(data)
+  },
 
+  [DELETE_TODOLIST]: (state: State, index: number) => {
+    state.todoData.splice(index, 1)
+  },
+
+  [DELETE_TODOITEM]: (state: State, index: number) => {
+    const todoList = state.todoData[state.currentTodoList]
+    todoList?.todoItems.splice(index, 1)
   }
 
 

@@ -1,5 +1,13 @@
 import { ActionContext } from "vuex"
-import { LOAD_DATA, UPDATE_DATA, SAVE_DATA, ADD_TODOLIST, ADD_TODOITEM } from "./constants"
+import { 
+  LOAD_DATA, 
+  UPDATE_DATA, 
+  SAVE_DATA, 
+  ADD_TODOLIST, 
+  ADD_TODOITEM,
+  DELETE_TODOLIST,
+  DELETE_TODOITEM,
+} from "./constants"
 import { State } from "./state"
 import { STORAGE_NAME } from '@/constants'
 import {TodoList, TodoItem} from "./types"
@@ -20,11 +28,26 @@ export default {
     localStorage.setItem(STORAGE_NAME, JSON.stringify(state.todoData))
   },
 
-  [ADD_TODOLIST]: ({ state, commit }: ActionContext<State, unknown>, data: {[k:string]: any}): void => {
-    const id = Tool.uniqueId();
-    data.id = id;
-    commit(ADD_TODOLIST, data as TodoItem)
+  [ADD_TODOLIST]: ({ state, commit }: ActionContext<State, unknown>, data: { [k: string]: any }): void => {
+    data.id = Tool.uniqueId()
+    commit(ADD_TODOLIST, data as TodoList)
     localStorage.setItem(STORAGE_NAME, JSON.stringify(state.todoData))
-  }
+  },
+
+  [ADD_TODOITEM]: ({ state, commit }: ActionContext<State, unknown>, data: { [k: string]: any }): void => {
+    data.id = Tool.uniqueId()
+    commit(ADD_TODOITEM, data as TodoItem)
+    localStorage.setItem(STORAGE_NAME, JSON.stringify(state.todoData))
+  },
+
+  [DELETE_TODOLIST]: ({ state, commit }: ActionContext<State, unknown>, index: number): void => {
+    commit(DELETE_TODOLIST, index)
+    localStorage.setItem(STORAGE_NAME, JSON.stringify(state.todoData))
+  },
+
+  [DELETE_TODOITEM]: ({ state, commit }: ActionContext<State, unknown>, index: number): void => {
+    commit(DELETE_TODOITEM, index)
+    localStorage.setItem(STORAGE_NAME, JSON.stringify(state.todoData))
+  },
 }
 

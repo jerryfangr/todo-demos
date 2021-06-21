@@ -3,12 +3,16 @@
   <title>Todo List form</title>
   <n-button 
     inline
-    style="font-size: 2.5em; margin-left: 30px;" 
+    style="font-size: 2.5em; margin-left: 30px; width: 40px;" 
     color="#83837d"
     ghost
     dashed
+    @click="toggleCreator"
   >
-    + 
+    <n-icon>
+      <sub-icon v-if="showCreator"/>
+      <add-icon v-else/>
+    </n-icon>
   </n-button>
   <hr>
   <!-- header end -->
@@ -16,66 +20,93 @@
   <!-- content start -->
   <div class="form-list">
     <todo-card
-      v-for="count in 20"
-      @deleteEvent="handlerDelete"
-      @editEvent="handlerEdit($event, count)"
+      v-for="(todoList, index) in todoData"
+      @deleteEvent="handlerDelete($event, index)"
+      @editEvent="handlerEdit($event, index)"
       :openLoading="loading"
-      :key="count"
+      :key="todoList.id"
     >
-      学习安排 {{ count }}
+      {{ todoList.title }}
     </todo-card>
   </div>
   <!-- content end -->
 
   <!-- form creator start -->
-  <div class="form-creator" v-show="showCreator">
+  <div 
+    class="form-creator animate__animated animate__bounceIn animate__faster" 
+    v-show="showCreator"
+  >
     <input 
       type="text" 
       class="title" 
       v-model="formTitle" 
       placeholder="Untitled">
-    <n-button @click="">
-      SAVE
-    </n-button>
+
+    <n-button 
+      size="large" 
+      style="width: 80%; font-size: 1.5em;"
+      color="#757575"
+      ghost
+      @click="createTodoList"
+    >Create</n-button>
+
   </div>
   <!-- form creator end -->
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue'
+import { ref, computed } from 'vue'
 import TodoCard from '@/components/TodoCard.vue'
 import { NButton, NIcon } from 'naive-ui'
-import { Add12Filled as AddIcon } from '@vicons/fluent'
+import { Add12Regular as AddIcon, Subtract20Filled as SubIcon } from '@vicons/fluent'
 import { useTodoStore } from '@/hooks'
-import { useRouter, useRoute } from 'vue-router'
+import { useRouter } from 'vue-router'
 
-ref: loading = false
+// loading data from localStorage
+const {state, dispatch, commit} = useTodoStore()
+dispatch('todo/LOAD_DATA')
+
+ref: loading = false // delete loding animation
 ref: showCreator = false
 ref: formTitle = ''
 
-const router = useRouter()
-const route = useRoute()
+const todoData = computed(() => state.todo.todoData);
 
-
-const handlerDelete = () => {
-  console.log('handlerDelete')
+// delete action
+const handlerDelete = (e: unknown, index: number) => {
   loading = true
-}
-
-const handlerEdit = (e: unknown, name: string | number) => {
-  console.log('handlerEdit: ', name)
-  router.push({
-    name: 'todolist',
-    params: {
-      name: name
-    }
-  })
+  dispatch('todo/DELETE_TODOLIST', index)
   loading = false
 }
 
-const {dispatch} = useTodoStore()
-dispatch('todo/LOAD_DATA')
+// edit action: open todolistpage
+const router = useRouter()
+const handlerEdit = (e: unknown, index: number) => {
+  console.log('handlerEdit: ')
+  commit('todo/SWITCH_TODOLIST', index)
+  const todoList = todoData.value[index]
+  router.push({
+    name: 'todolist',
+    params: {
+      name: todoList.title
+    }
+  })
+}
 
+// toggle creator window
+const toggleCreator = () => {
+  showCreator = !showCreator
+}
+
+// create todolist
+const createTodoList = () => {
+  const newTodoList = {
+    title: formTitle || 'Untitled',
+    todoItems: []
+  }
+  dispatch('todo/ADD_TODOLIST', newTodoList)
+  formTitle = ''
+}
 </script>
 
 
@@ -86,5 +117,29 @@ dispatch('todo/LOAD_DATA')
     grid-gap:12px 15px;
     justify-content: space-between;
     grid-template-columns: repeat(auto-fill, 260px);
+  }
+  .form-creator {
+    @include abs-margin-center();
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    width: 600px;
+    height: 140px;
+    box-sizing: border-box;
+    border: 1px solid #dfdfdf;
+    box-shadow: 0 0 2px 0 #d2d2d2;
+    padding: 0 10px;
+    padding-bottom: 10px;
+
+    .title {
+      width: 100%;
+      height: 50px;
+      font-size: 1.6em;
+      font-weight: 600;
+      // text-indent: 5px;
+      text-align: center;
+      color: #444343;
+    }
   }
 </style>
