@@ -18,7 +18,6 @@ const routes: Array<RouteRecordRaw> = [
     path: '/todolist/:name',
     name: 'todolist',
     component: () => import('@/pages/TodoList.vue'),
-    props: true,
     meta: { needLoadData: false },
 
     children: [{ // todoitem detail
@@ -30,9 +29,9 @@ const routes: Array<RouteRecordRaw> = [
   { // not match paths
     path: '/:pathMatch(.*)*',
       name: '404',
-        redirect: (to) => {
-          return '/';
-        }
+      redirect: (to) => {
+        return '/';
+      }
   }
 ]
 
@@ -47,7 +46,7 @@ router.beforeEach((to, from, next) => {
     if (store.state.todo.isLoad) {
       next()
     } else {
-      return { path: '/', }
+      return { name: 'home', }
     }
   } else {
     next()
