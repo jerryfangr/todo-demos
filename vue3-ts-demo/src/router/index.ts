@@ -5,7 +5,7 @@ import {
 } from 'vue-router'
 import store from '@/store'
 import Home from "@/pages/Home.vue";
-
+import TodoList from '@/pages/TodoList.vue'
 
 
 const routes: Array<RouteRecordRaw> = [
@@ -17,8 +17,8 @@ const routes: Array<RouteRecordRaw> = [
   { // todolist detail
     path: '/todolist/:name',
     name: 'todolist',
-    component: () => import('@/pages/TodoList.vue'),
-    meta: { needLoadData: false },
+    component: TodoList,
+    meta: { needLoadData: true },
 
     children: [{ // todoitem detail
       path: 'todoitem/:id',
@@ -43,10 +43,10 @@ const router = createRouter({
 
 router.beforeEach((to, from, next) => {
   if (to.meta.needLoadData) {
-    if (store.state.todo.isLoad) {
+    if (store.state.todo.currentTodoList !== -1) {
       next()
     } else {
-      return { name: 'home', }
+      next({ name: 'home'})
     }
   } else {
     next()

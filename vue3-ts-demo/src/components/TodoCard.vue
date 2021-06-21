@@ -8,7 +8,7 @@
   >
 
     <div class="text">
-        <slot></slot>
+      <slot></slot>
     </div> 
 
     <div class="operate" v-show="showButton">
@@ -27,7 +27,10 @@
 
 <script setup lang="ts">
   import { NButton, NIcon } from 'naive-ui'
-  import { Delete28Regular as DeleteIcon, DocumentEdit16Regular as EditIcon } from '@vicons/fluent'
+  import { 
+    Delete28Regular as DeleteIcon, 
+    DocumentEdit16Regular as EditIcon 
+  } from '@vicons/fluent'
   import { ref, useContext, defineProps  } from 'vue'
   // import { getCurrentInstance  } from 'vue'
   // import type { ComponentInternalInstance  } from 'vue'

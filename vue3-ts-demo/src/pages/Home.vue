@@ -55,10 +55,12 @@
 </template>
 
 <script setup lang="ts">
-import { ref, computed } from 'vue'
+// components
 import TodoCard from '@/components/TodoCard.vue'
 import { NButton, NIcon } from 'naive-ui'
 import { Add12Regular as AddIcon, Subtract20Filled as SubIcon } from '@vicons/fluent'
+// local
+import { ref, computed } from 'vue'
 import { useTodoStore } from '@/hooks'
 import { useRouter } from 'vue-router'
 
@@ -114,7 +116,7 @@ const createTodoList = () => {
   .form-list {
     width: 100%;
     display: grid;
-    grid-gap:12px 15px;
+    grid-gap: 12px 15px;
     justify-content: space-between;
     grid-template-columns: repeat(auto-fill, 260px);
   }
