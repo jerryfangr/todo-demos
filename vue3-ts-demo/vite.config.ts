@@ -13,8 +13,8 @@ export default defineConfig({
   },
   css: {
     preprocessorOptions: {
-      sass: {
-        imports: [resolve(__dirname, 'src/styles/common.scss')],
+      scss: {
+        additionalData: '@import "./src/styles/common";'
       }
     }
   }

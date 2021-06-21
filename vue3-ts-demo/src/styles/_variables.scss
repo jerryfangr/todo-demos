@@ -1,0 +1,57 @@
+// clear float
+@mixin clearFix() {
+  content: '';
+  display: block;
+  height: 0;
+  width: 0;
+  clear: both;
+}
+
+
+/* layout */
+/* horizontal or vertical or both center width position: absolute; */
+@mixin abs-layout($left: default, $top: default, $right: default, $bottom: default) {
+  position: absolute;
+  @if $left != default {
+    left: $left;
+  }
+  @if $top != default {
+    top: $top;
+  }
+  @if $right != default {
+    right: $right;
+  }
+  @if $bottom != default {
+    bottom: $bottom;
+  }
+}
+@mixin abs-center() {
+  @include abs-layout(50%, 50%);
+  transform: translate(-50%, -50%);
+}
+@mixin abs-margin-center() {
+  margin: auto;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+@mixin abs-left($distance: 0) {
+  @include abs-layout($distance, 50%);
+  transform: translateY(-50%);
+}
+@mixin abs-right($distance: 0) {
+  @include abs-layout(default, 50%, $distance);
+  transform: translateY(-50%);
+}
+@mixin abs-top($distance: 0) {
+  @include abs-layout(50%, $distance);
+  transform: translateX(-50%);
+}
+@mixin abs-bottom($distance: 0) {
+  @include abs-layout(50%, default, default, $distance);
+  transform: translateX(-50%);
+}
+
