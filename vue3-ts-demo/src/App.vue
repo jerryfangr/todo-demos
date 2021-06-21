@@ -8,6 +8,7 @@
 </template>
 
 <script setup lang="ts">
+import 'animate.css'
 import { ref, computed } from 'vue'
 import { NConfigProvider, darkTheme } from 'naive-ui'
 import { useTodoStore } from '@/hooks'
