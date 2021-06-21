@@ -7,11 +7,13 @@ import TodoList from "./types"
  */
 const createState = () => {
   const state: {
-    todoData: TodoList[],
+    todoData: TodoList[]
+    currentTodoList: number
     isLoad: boolean
   } = {
     todoData: [],
-    isLoad: true // false
+    currentTodoList: -1,
+    isLoad: false
   }
 
   return state

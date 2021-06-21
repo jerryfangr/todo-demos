@@ -1,6 +1,5 @@
 type TodoItem = {
   id: string
-  // 
   title: string
   content?: string
   status: 'none' | 'todo' | 'in progress' | 'completed'
