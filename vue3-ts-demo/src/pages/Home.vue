@@ -21,8 +21,8 @@
   <div class="form-list">
     <todo-card
       v-for="(todoList, index) in todoData"
-      @deleteEvent="handlerDelete($event, index)"
-      @editEvent="handlerEdit($event, index)"
+      @deleteEvent="handlerDelete(index)"
+      @editEvent="handlerEdit(index)"
       :openLoading="loading"
       :key="todoList.id"
     >
@@ -32,9 +32,10 @@
   <!-- content end -->
 
   <!-- form creator start -->
+  <div class="form-creator-outside" v-show="showCreator" @click="toggleCreator"></div>
   <div 
-    class="form-creator animate__animated animate__bounceIn animate__faster" 
     v-show="showCreator"
+    class="form-creator animate__animated animate__bounceIn animate__faster"
   >
     <input 
       type="text" 
@@ -49,7 +50,6 @@
       ghost
       @click="createTodoList"
     >Create</n-button>
-
   </div>
   <!-- form creator end -->
 </template>
@@ -75,7 +75,7 @@ ref: formTitle = ''
 const todoData = computed(() => state.todo.todoData);
 
 // delete action
-const handlerDelete = (e: unknown, index: number) => {
+const handlerDelete = (index: number) => {
   loading = true
   dispatch('todo/DELETE_TODOLIST', index)
   loading = false
@@ -83,7 +83,7 @@ const handlerDelete = (e: unknown, index: number) => {
 
 // edit action: open todolistpage
 const router = useRouter()
-const handlerEdit = (e: unknown, index: number) => {
+const handlerEdit = (index: number) => {
   console.log('handlerEdit: ')
   commit('todo/SWITCH_TODOLIST', index)
   const todoList = todoData.value[index]
@@ -113,35 +113,41 @@ const createTodoList = () => {
 
 
 <style scoped lang="scss">
-  .form-list {
+.form-list {
+  width: 100%;
+  display: grid;
+  grid-gap: 12px 15px;
+  justify-content: space-between;
+  grid-template-columns: repeat(auto-fill, 260px);
+}
+.form-creator-outside {
+  @include abs-margin-center();
+  width: 100%;
+  height:100%;
+  z-index: 2;
+}
+.form-creator {
+  @include abs-margin-center();
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  width: 600px;
+  height: 140px;
+  box-sizing: border-box;
+  border: 1px solid #dfdfdf;
+  box-shadow: 0 0 2px 0 #d2d2d2;
+  padding: 0 10px;
+  padding-bottom: 10px;
+  z-index: 3;
+  .title {
     width: 100%;
-    display: grid;
-    grid-gap: 12px 15px;
-    justify-content: space-between;
-    grid-template-columns: repeat(auto-fill, 260px);
+    height: 50px;
+    font-size: 1.6em;
+    font-weight: 600;
+    text-align: center;
+    color: #444343;
   }
-  .form-creator {
-    @include abs-margin-center();
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
-    width: 600px;
-    height: 140px;
-    box-sizing: border-box;
-    border: 1px solid #dfdfdf;
-    box-shadow: 0 0 2px 0 #d2d2d2;
-    padding: 0 10px;
-    padding-bottom: 10px;
+}
 
-    .title {
-      width: 100%;
-      height: 50px;
-      font-size: 1.6em;
-      font-weight: 600;
-      // text-indent: 5px;
-      text-align: center;
-      color: #444343;
-    }
-  }
 </style>
