@@ -2,7 +2,7 @@ type TodoItem = {
   id: string
   title: string
   content?: string
-  status: 'none' | 'todo' | 'in progress' | 'completed'
+  status: 'no status' | 'todo' | 'in progress' | 'completed'
   [k: string]: boolean | number | string | undefined
 }
 
