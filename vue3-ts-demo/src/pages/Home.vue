@@ -84,7 +84,6 @@ const handlerDelete = (index: number) => {
 // edit action: open todolistpage
 const router = useRouter()
 const handlerEdit = (index: number) => {
-  console.log('handlerEdit: ')
   commit('todo/SWITCH_TODOLIST', index)
   const todoList = todoData.value[index]
   router.push({

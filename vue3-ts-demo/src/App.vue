@@ -18,15 +18,6 @@ ref: darkMode = computed(() => {
   return state.scene.isDarkMode
 })
 
-setTimeout(() => {
-  // commit('scene/toggleDarkMode')
-  console.log(state.scene)
-}, 2000)
-
-// DEBUG: force reload
-// setInterval(() => {
-//   location.reload()
-// }, 8 * 1000)
 </script>
 
 <style lang="scss">

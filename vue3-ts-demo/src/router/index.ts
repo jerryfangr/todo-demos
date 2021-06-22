@@ -19,12 +19,6 @@ const routes: Array<RouteRecordRaw> = [
     name: 'todolist',
     component: TodoList,
     meta: { needLoadData: true },
-
-    children: [{ // todoitem detail
-      path: 'todoitem/:id',
-      component: () => import('@/pages/Home.vue'),
-      props: true,
-    }]
   },
   { // not match paths
     path: '/:pathMatch(.*)*',

@@ -7,11 +7,11 @@
     @click="editItem"
   >
 
-    <div class="text">
+    <div class="text" :style="'text-align:' + align + ';'">
       <slot></slot>
     </div> 
 
-    <div class="operate" v-show="showButton">
+    <div class="operate" v-show="showButton && !hiddenDelete">
       <n-button 
         size="tiny"
         @click="deleteItem"
@@ -31,7 +31,8 @@
     Delete28Regular as DeleteIcon, 
     DocumentEdit16Regular as EditIcon 
   } from '@vicons/fluent'
-  import { ref, useContext, defineProps  } from 'vue'
+  import { ref, useContext, defineProps } from 'vue'
+  import type { PropType } from 'vue'
   // import { getCurrentInstance  } from 'vue'
   // import type { ComponentInternalInstance  } from 'vue'
   // const { emit } = getCurrentInstance() as ComponentInternalInstance 
@@ -44,6 +45,14 @@
     cardStyle: {
       type: String,
       default: ''
+    },
+    hiddenDelete: {
+      type: Boolean,
+      default: false
+    },
+    align: {
+      type: String as PropType<string>,
+      default: 'left'
     }
   })
 
@@ -79,7 +88,7 @@
     border: 1px solid #dfdfdf;
     color: #585856;
     font-size: 16px;
-    font-weight: bold;
+    font-weight: 600;
     transition: background .2s;
     border-radius: 3px;
     padding: 0 12px;
@@ -97,7 +106,6 @@
     
     .text {
       flex-grow: 1;
-      text-align: left;
       overflow: hidden;
       text-overflow: ellipsis;
     }
@@ -124,7 +132,6 @@
         }
       }
     }
-
 
     @keyframes appear {
       0% { 
