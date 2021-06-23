@@ -18,3 +18,6 @@
 
 # preview
 [click here](https://jerryfangr.github.io/todo-demos/vue3-ts-demo/dist/index.html)
+
+
+![example](./preview/example.gif) 
