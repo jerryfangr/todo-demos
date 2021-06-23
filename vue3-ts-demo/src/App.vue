@@ -1,23 +1,11 @@
 <template>
-  <div :class="{'container': true, 'dark': darkMode}">
-    <!-- <img alt="Vue logo" src="./assets/logo.png" /> -->
-    <n-config-provider :theme="darkMode=== true ? darkTheme : undefined">
+  <div class="container">
       <router-view></router-view>
-    </n-config-provider>
   </div>
 </template>
 
 <script setup lang="ts">
 import 'animate.css'
-import { ref, computed } from 'vue'
-import { NConfigProvider, darkTheme } from 'naive-ui'
-import { useTodoStore } from '@/hooks'
-const { state, getters, dispatch, commit} = useTodoStore()
-
-ref: darkMode = computed(() => {
-  return state.scene.isDarkMode
-})
-
 </script>
 
 <style lang="scss">
