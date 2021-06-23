@@ -60,7 +60,7 @@ import TodoCard from '@/components/TodoCard.vue'
 import { NButton, NIcon } from 'naive-ui'
 import { Add12Regular as AddIcon, Subtract20Filled as SubIcon } from '@vicons/fluent'
 // local
-import { ref, computed } from 'vue'
+import { computed } from 'vue'
 import { useTodoStore } from '@/hooks'
 import { useRouter } from 'vue-router'
 

@@ -1,6 +1,5 @@
 <template>
   <input class="title" v-model="originTodoList.title"/>
-  <!-- add 参考home -->
   <hr>
   <!-- todolist -->
   <ul class="todolist-items">

@@ -27,10 +27,7 @@
 
 <script setup lang="ts">
   import { NButton, NIcon } from 'naive-ui'
-  import { 
-    Delete28Regular as DeleteIcon, 
-    DocumentEdit16Regular as EditIcon 
-  } from '@vicons/fluent'
+  import { Delete28Regular as DeleteIcon } from '@vicons/fluent'
   import { ref, useContext, defineProps } from 'vue'
   import type { PropType } from 'vue'
   // import { getCurrentInstance  } from 'vue'
